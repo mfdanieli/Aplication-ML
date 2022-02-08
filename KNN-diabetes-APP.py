@@ -9,6 +9,7 @@ and predict if the pacient has diabetes in real-time
 #%% Import Libraries
 
 import pandas as pd
+import sklearn
 from sklearn.model_selection import train_test_split
 import streamlit as st
 from sklearn.metrics import accuracy_score
