@@ -84,7 +84,7 @@ user_input_variables = get_user_data()
 # gráfico
 graf = st.bar_chart(user_input_variables)
     
-st.subheader('Data of the patient')
+st.subheader('Data of the patient:')
 st.write(user_input_variables)
 
 # standardize the new variables input by the user
@@ -95,13 +95,13 @@ prediction = knn.predict(user_input_variables_standard)
 
 
 # Acurácia do modelo 
-st.subheader('Model accuracy')
+st.subheader('Model accuracy:')
 st.write(accuracy_score(y_test, knn.predict(X_test))*100)
 
 
 st.subheader('Prediction: ')
 st.write(prediction)
-'''0: no
+'''0: no \n
 1: yes
 '''
 
