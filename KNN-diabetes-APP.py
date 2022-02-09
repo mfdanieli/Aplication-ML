@@ -50,7 +50,7 @@ Source of trainning/testing dataset: PIMA - INDIA (Kaggle)
 st.subheader('Data information')
 
 # Nome do usuário
-user_input = st.sidebar.text_input('Input your name')
+user_input = st.sidebar.text_input('Input your name:')
 
 st.write('Patient: ', user_input)
 
@@ -95,11 +95,11 @@ prediction = knn.predict(user_input_variables_standard)
 
 
 # Acurácia do modelo 
-#st.subheader('Acuracia do modelo')
+st.subheader('Model accuracy')
 st.write(accuracy_score(y_test, knn.predict(X_test))*100)
 
 
-st.subheader('Pretiction: ')
+st.subheader('Prediction: ')
 st.write(prediction)
 '''0: no
 1: yes
