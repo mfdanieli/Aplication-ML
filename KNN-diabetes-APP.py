@@ -47,7 +47,7 @@ Source of trainning/testing dataset: PIMA - INDIA (Kaggle)
 """)
 
 # Cabeçalho
-st.subheader('Data information')
+st.subheader('Data information:')
 
 # Nome do usuário
 user_input = st.sidebar.text_input('Input your name:')
