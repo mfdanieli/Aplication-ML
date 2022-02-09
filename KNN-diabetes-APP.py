@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Here it is possible to input new values for risk factors 
+This app allows to input new values for risk factors 
 and predict if the pacient has diabetes in real-time
 """
 #!/usr/bin/env python
@@ -42,38 +42,38 @@ knn.fit(X_train,y_train)
 # Title
 st.write("""
 Predicting Diabetes\n
-App que utiliza machine learn para prever possível diabetes dos pacientes.\n
-Fonte: PIMA - INDIA (Kaggle)       
+App that uses machine learning to predict wheater a patient has diabetes\n
+Source of trainning/testing dataset: PIMA - INDIA (Kaggle)       
 """)
 
 # Cabeçalho
-st.subheader('Informações dos dados')
+st.subheader('Data information')
 
 # Nome do usuário
-user_input = st.sidebar.text_input('Digite seu nome')
+user_input = st.sidebar.text_input('Input your name')
 
-st.write('Paciente: ', user_input)
+st.write('Patient: ', user_input)
 
 # dados dos usuários com a função
 def get_user_data():
-    pregnancies = st.sidebar.slider('Gravidez', 0, 15, 1)
-    glucose = st.sidebar.slider('Glicose', 0.0, 200.0, 110.0)
-    blood_pressure = st.sidebar.slider('Pressão Sanguínea', 0.0, 122.0, 72.0)
-    skin_thickness = st.sidebar.slider('Espessuara da pele', 0.0, 99.0, 20.0)
-    insulin = st.sidebar.slider('Insulina', 0.0, 900.0, 30.0)
-    bmi = st.sidebar.slider('Índice de massa corporal', 0.01, 70.0, 15.0)
-    dpf = st.sidebar.slider('Histórico familiar de diabetes', 0.0, 3.0, 0.0)
-    age = st.sidebar.slider('Idade', 15, 100, 21)
+    pregnancies = st.sidebar.slider('Pregnancies', 0, 15, 1)
+    glucose = st.sidebar.slider('Glucose', 0.0, 200.0, 110.0)
+    blood_pressure = st.sidebar.slider('Blood Pressure', 0.0, 122.0, 72.0)
+    skin_thickness = st.sidebar.slider('Skin Thickness', 0.0, 99.0, 20.0)
+    insulin = st.sidebar.slider('Insulin', 0.0, 900.0, 30.0)
+    bmi = st.sidebar.slider('Body Mass Index', 0.01, 70.0, 15.0)
+    dpf = st.sidebar.slider('Diabetes Pedigree Function', 0.0, 3.0, 0.0)
+    age = st.sidebar.slider('Age', 15, 100, 21)
     
     # um dicionário recebe as informações acima
-    user_data = {'Gravidez': pregnancies,
-                'Glicose': glucose,
-                'Blood pressure': blood_pressure,
-                'Espessura da pele': skin_thickness,
-                'Insulina': insulin,
-                'Indice de massa corporal': bmi,
-                'Historico familiar de diabetes': dpf,
-                'Idade': age
+    user_data = {'Pregnancies': pregnancies,
+                'Glucose': glucose,
+                'Blood Pressure': blood_pressure,
+                'Skin Thickness': skin_thickness,
+                'Insuline': insulin,
+                'Body Mass Index': bmi,
+                'Diabetes Pedigree Function': dpf,
+                'Age': age
                  }
     features = pd.DataFrame(user_data,index=[0])
   
@@ -84,13 +84,13 @@ user_input_variables = get_user_data()
 # gráfico
 graf = st.bar_chart(user_input_variables)
     
-st.subheader('Dados do Usuário')
+st.subheader('Data of the patient')
 st.write(user_input_variables)
 
 # standardize the new variables input by the user
 user_input_variables_standard = scaler.transform(user_input_variables)
 
-# Previsao
+# Predict
 prediction = knn.predict(user_input_variables_standard)
 
 
@@ -99,7 +99,10 @@ prediction = knn.predict(user_input_variables_standard)
 st.write(accuracy_score(y_test, knn.predict(X_test))*100)
 
 
-st.subheader('Previsão: ')
+st.subheader('Pretiction: ')
 st.write(prediction)
+'''0: no
+1: yes
+'''
 
 
